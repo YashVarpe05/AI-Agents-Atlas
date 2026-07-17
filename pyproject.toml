@@ -1,0 +1,7 @@
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+extend-exclude = [".venv", "node_modules", "dist"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
