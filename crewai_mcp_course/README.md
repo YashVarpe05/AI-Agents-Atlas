@@ -1,144 +1,100 @@
-# CrewAI with FastMCP Server Integration Course
+# CrewAI and MCP-style tool boundaries
 
-This course teaches beginners how to use CrewAI with FastMCP server access through step-by-step programming examples.
+This three-lesson course introduces CrewAI orchestration and then separates tool contracts from agent
+roles with a small FastMCP companion server. It is an educational progression, not a production MCP
+client implementation.
 
-## Course Overview
+## What the lessons actually implement
 
-This course is designed for beginner developers with basic Python knowledge who want to learn how to integrate CrewAI agents with FastMCP servers. The course covers fundamental concepts, practical implementation, and advanced patterns for building intelligent agent workflows.
+| Lesson | Implementation | MCP status |
+|---|---|---|
+| [01](lesson_01/) | One CrewAI researcher and one task | No MCP code |
+| [02](lesson_02/) | Sequential researcher, writer, and editor with local Python tools | MCP-style concepts only; tools run locally |
+| [03](lesson_03/) | CrewAI wrappers plus a separate FastMCP project-data server | Companion server included; the agent uses equivalent local wrappers and does not connect to the server |
 
-## Lessons
+The distinction matters: lesson 03 lets readers compare a server contract with in-process tool
+wrappers, but `agent.py` does not yet act as an MCP network client.
 
-### Lesson 1: Setting up CrewAI with MCP Server Access
-- Install required packages
-- Set up environment variables
-- Create a basic CrewAI agent
-- Execute simple tasks
+## Prerequisites
 
-```mermaid
-graph TD
-    A[Install Packages] --> B[Set Environment Variables]
-    B --> C[Create CrewAI Agent]
-    C --> D[Execute Task]
-```
+- Python 3.11
+- An OpenAI API key
+- A separate virtual environment for each lesson
 
-### Lesson 2: Integrating MCP Server with CrewAI
-- Create custom tools for MCP server access
-- Configure authentication and connection settings
-- Use MCP server data in agent tasks
-- Handle errors and exceptions
+## Installation
 
-```mermaid
-graph TD
-    A[Create FastMCP Tool] --> B[Configure Authentication]
-    B --> C[Create Agent with Tool]
-    C --> D[Execute Task with MCP Data]
-    D --> E[Handle Response]
-```
+From the selected lesson folder:
 
-### Lesson 3: Advanced CrewAI Patterns with MCP Server
-- Implement multi-agent workflows
-- Use hierarchical processes
-- Share data between agents through the MCP server
-- Store and retrieve research findings
-- Implement quality assurance processes
-
-```mermaid
-graph TD
-    A[Researcher Agent] -->|Query| B(FastMCP Server)
-    B -->|Return Data| A
-    A -->|Share Findings| C[Writer Agent]
-    C -->|Create Report| D[Reviewer Agent]
-    D -->|Provide Feedback| C
-    C -->|Final Report| E[Output]
-```
-
-## Getting Started
-
-### Using pip (traditional method)
-
-1. Install the required packages for the lesson you want to run:
 ```bash
-pip install -r lesson_01/requirements.txt
-pip install -r lesson_02/requirements.txt
-pip install -r lesson_03/requirements.txt
+uv venv --python 3.11 .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+cp .env.example .env
 ```
 
-2. Set up your environment variables:
+On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1` and use
+`Copy-Item .env.example .env`.
+
+## Environment variables
+
+| Variable | Lesson | Required | Purpose |
+|---|---:|---|---|
+| `OPENAI_API_KEY` | 01-03 | Yes | Authenticates model calls |
+
+## Running
+
 ```bash
-export OPENAI_API_KEY=your-openai-api-key
-export MCP_SERVER_URL=http://localhost:8000
+cd lesson_01
+python agent.py
 ```
 
-3. Run the examples:
 ```bash
-python lesson_01/agent.py
-python lesson_02/agent.py --topic "AI agents in healthcare"
-
-# Lesson 03 includes a matching FastMCP server and CrewAI wrappers.
-python lesson_03/agent.py
-# Optional: inspect/run the FastMCP server separately:
-python lesson_03/mcp_server.py
+cd lesson_02
+python agent.py --topic "AI agents in healthcare"
 ```
 
-### Using uv (recommended modern method)
-
-[uv](https://github.com/astral-sh/uv) is a fast Python package installer and resolver. To use uv:
-
-1. Install uv:
 ```bash
-pip install uv
+cd lesson_03
+python agent.py
 ```
 
-2. Create and activate a virtual environment:
+To inspect the companion server separately:
+
 ```bash
-uv venv
-source .venv/Scripts/activate
+cd lesson_03
+python mcp_server.py
 ```
 
-3. Install dependencies:
-```bash
-uv pip install -r lesson_01/requirements.txt
-uv pip install -r lesson_02/requirements.txt
-uv pip install -r lesson_03/requirements.txt
+Running the server does not automatically connect lesson 03's agent to it.
+
+## Architecture
+
+```text
+Lesson 01: topic -> researcher -> answer
+Lesson 02: topic -> researcher -> writer -> editor -> article
+Lesson 03: project question -> local tool wrappers -> CrewAI roles -> status report
+                                  |
+                                  `-- companion FastMCP server exposes the same project domain
 ```
 
-4. Set up your environment variables:
-```bash
-export OPENAI_API_KEY=your-openai-api-key
-export MCP_SERVER_URL=http://localhost:8000
-```
+## Safety and limitations
 
-5. Run the examples:
-```bash
-python lesson_01/agent.py
-python lesson_02/agent.py --topic "AI agents in healthcare"
+- The researcher roles do not include live web search, so claims may be stale or unsupported.
+- Generated reports require human review before business use.
+- Lesson 03's sample project data is illustrative and contains no live system integration.
+- Do not submit confidential data to a model provider without appropriate approval and controls.
 
-python lesson_03/agent.py
-# Optional: inspect/run the FastMCP server separately:
-python lesson_03/mcp_server.py
-```
+## Validation
 
-## Requirements
+Repository QA parses all lesson Python files and resolves each requirements file independently on
+Python 3.11. Credential-backed model execution is a manual step.
 
-- Python 3.8+
-- CrewAI library
-- FastMCP library
-- OpenAI API key
-- FastMCP server example for Lesson 03
+## Contributing
 
-## Course Structure
+Keep each lesson independently runnable and update this table whenever implementation and stated MCP
+capability diverge. Follow the root [contribution guide](../CONTRIBUTING.md).
 
-Each lesson includes:
-- A lesson folder with `agent.py`, `requirements.txt`, and `.env.example`
-- Clear objectives and expected outcomes
-- Step-by-step implementation
-- Best practices for error handling and security
+## License and credits
 
-## Next Steps
-
-After completing this course, you should be able to:
-- Create and configure CrewAI agents
-- Integrate MCP servers with agent workflows
-- Build complex multi-agent systems
-- Implement data sharing between agents
-- Design robust error handling for production systems
+The course is included under the root [MIT License](../LICENSE) and upstream attribution in
+[ATTRIBUTION.md](../ATTRIBUTION.md).

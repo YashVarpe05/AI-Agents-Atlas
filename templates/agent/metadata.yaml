@@ -1,0 +1,14 @@
+title: project-slug
+description: One sentence describing the user-visible outcome
+author: your-github-handle
+language: python
+framework: langchain
+tags: [example, agent]
+industry: general
+difficulty: beginner
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt
+license: MIT
+source: https://github.com/owner/repository/tree/main/agents/NN-project-slug
+provenance: original-contribution

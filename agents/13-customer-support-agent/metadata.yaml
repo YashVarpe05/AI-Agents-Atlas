@@ -9,3 +9,6 @@ difficulty: advanced
 llm: gpt-4o-mini
 entrypoint: agent.py
 requirements: requirements.txt
+license: MIT
+source: https://github.com/ashishpatel26/500-AI-Agents-Projects/tree/main/agents/13-customer-support-agent
+provenance: upstream-local-implementation

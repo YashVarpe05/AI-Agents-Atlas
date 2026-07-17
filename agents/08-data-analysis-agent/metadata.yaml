@@ -9,3 +9,6 @@ difficulty: intermediate
 llm: gpt-4o
 entrypoint: agent.py
 requirements: requirements.txt
+license: MIT
+source: https://github.com/ashishpatel26/500-AI-Agents-Projects/tree/main/agents/08-data-analysis-agent
+provenance: upstream-local-implementation

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc" preserveAspectRatio="xMidYMid meet">
+  <title id="title">AI Agents Atlas animated dark banner</title>
+  <desc id="desc">Terminal-inspired banner with an animated ASCII agent, typing text, particles, scanlines, and a connected project graph.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#06080c"/><stop offset=".55" stop-color="#0c1220"/><stop offset="1" stop-color="#171126"/>
+      <animate attributeName="x1" values="0;1;0" dur="14s" repeatCount="indefinite"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#22d3ee"/><stop offset=".5" stop-color="#34d399"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M36 0H0V36" fill="none" stroke="#334155" stroke-opacity=".25"/></pattern>
+    <filter id="glass"><feGaussianBlur in="SourceGraphic" stdDeviation=".25"/></filter>
+    <clipPath id="typing"><rect x="100" y="0" width="0" height="48"><animate attributeName="width" values="0;570;570;0" keyTimes="0;.28;.88;1" dur="8s" repeatCount="indefinite"/></rect></clipPath>
+  </defs>
+  <rect width="1200" height="420" rx="18" fill="url(#bg)"/>
+  <rect width="1200" height="420" rx="18" fill="url(#grid)"/>
+  <rect x="1.5" y="1.5" width="1197" height="417" rx="17" fill="none" stroke="url(#edge)" stroke-width="3" stroke-dasharray="110 820"><animate attributeName="stroke-dashoffset" values="930;0" dur="7s" repeatCount="indefinite"/></rect>
+  <g opacity=".7">
+    <circle cx="96" cy="338" r="3" fill="#22d3ee"><animate attributeName="cy" values="338;54;338" dur="11s" repeatCount="indefinite"/></circle>
+    <circle cx="342" cy="74" r="2.5" fill="#34d399"><animate attributeName="cy" values="74;360;74" dur="13s" repeatCount="indefinite"/></circle>
+    <circle cx="714" cy="348" r="3" fill="#a78bfa"><animate attributeName="cy" values="348;68;348" dur="9s" repeatCount="indefinite"/></circle>
+    <circle cx="1082" cy="96" r="2.5" fill="#fbbf24"><animate attributeName="cy" values="96;352;96" dur="12s" repeatCount="indefinite"/></circle>
+  </g>
+  <rect x="56" y="48" width="1088" height="324" rx="14" fill="#0b1018" fill-opacity=".78" stroke="#334155" filter="url(#glass)"/>
+  <circle cx="86" cy="76" r="5" fill="#fb7185"/><circle cx="104" cy="76" r="5" fill="#fbbf24"/><circle cx="122" cy="76" r="5" fill="#34d399"/>
+  <text x="146" y="82" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="15">atlas://repository/agents</text>
+  <g fill="#22d3ee" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="17" opacity=".92">
+    <text x="92" y="139">   .-----.</text><text x="92" y="163">  /  o o  \</text><text x="92" y="187"> |    ^    |</text><text x="92" y="211"> |  \___/  |</text><text x="92" y="235">  '-------'</text>
+    <animate attributeName="opacity" values=".55;1;.55" dur="4s" repeatCount="indefinite"/>
+  </g>
+  <text x="276" y="151" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="18">$ initialize --collection</text>
+  <text x="276" y="218" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="51" font-weight="750">AI Agents Atlas</text>
+  <g clip-path="url(#typing)"><text x="276" y="266" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="22">DISCOVER. LEARN. BUILD.</text></g>
+  <rect x="572" y="244" width="11" height="27" fill="#34d399"><animate attributeName="opacity" values="1;0;1" dur=".9s" repeatCount="indefinite"/></rect>
+  <g fill="none" stroke="url(#edge)" stroke-width="2" opacity=".8">
+    <path d="M826 126l82 44 85-30 84 70-54 88-102-22-80 56-70-68 34-78z"/>
+    <path d="M908 170l13 106m72-136-72 136m156-66-156 66m102 22-102-22m-80 56 80-56m-150-12 150 12" stroke-dasharray="8 8"><animate attributeName="stroke-dashoffset" values="32;0" dur="3s" repeatCount="indefinite"/></path>
+  </g>
+  <g fill="#0b1018" stroke-width="3"><circle cx="826" cy="126" r="9" stroke="#22d3ee"/><circle cx="908" cy="170" r="9" stroke="#34d399"/><circle cx="993" cy="140" r="9" stroke="#a78bfa"/><circle cx="1077" cy="210" r="9" stroke="#fbbf24"/><circle cx="1023" cy="298" r="9" stroke="#fb7185"/><circle cx="921" cy="276" r="12" fill="#34d399" stroke="#34d399"/><circle cx="841" cy="332" r="9" stroke="#22d3ee"/><circle cx="771" cy="264" r="9" stroke="#a78bfa"/></g>
+  <text x="276" y="319" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="16">20 agents  |  3 lessons  |  4 frameworks  |  status: ready</text>
+  <rect x="56" y="48" width="1088" height="2" fill="#22d3ee" opacity=".24"><animate attributeName="y" values="50;368;50" dur="6s" repeatCount="indefinite"/></rect>
+</svg>

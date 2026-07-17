@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Customer Support Agent screenshot placeholder</title>
+  <desc id="desc">Documentation placeholder to replace after a redacted credentialed run.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#080a0f"/><stop offset="1" stop-color="#111827"/></linearGradient>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M42 0H0V42" fill="none" stroke="#243244" stroke-opacity=".45"/></pattern>
+  </defs>
+  <rect width="1200" height="675" rx="20" fill="url(#bg)"/>
+  <rect width="1200" height="675" rx="20" fill="url(#grid)"/>
+  <rect x="56" y="52" width="1088" height="571" rx="14" fill="#0f141c" stroke="#334155"/>
+  <circle cx="88" cy="84" r="6" fill="#fb7185"/><circle cx="110" cy="84" r="6" fill="#fbbf24"/><circle cx="132" cy="84" r="6" fill="#34d399"/>
+  <text x="166" y="91" fill="#9aa7b8" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="20">ai-agents-atlas / 13-customer-support-agent</text>
+  <path d="M88 137H1112" stroke="#253041"/>
+  <text x="88" y="207" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="18">$ python agent.py --help</text>
+  <text x="88" y="278" fill="#f4f7fb" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700">Customer Support Agent</text>
+  <text x="88" y="326" fill="#9aa7b8" font-family="Inter, Arial, sans-serif" font-size="22">Langgraph reference implementation</text>
+  <rect x="88" y="376" width="720" height="116" rx="10" fill="#141b25" stroke="#253041"/>
+  <text x="116" y="420" fill="#22d3ee" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="17">SCREENSHOT PLACEHOLDER</text>
+  <text x="116" y="458" fill="#c7d2e0" font-family="Inter, Arial, sans-serif" font-size="19">Replace with a redacted capture after a credentialed test run.</text>
+  <path d="M862 404h168m-168 36h220m-220 36h138" stroke="#334155" stroke-width="12" stroke-linecap="round"/>
+  <text x="88" y="568" fill="#64748b" font-family="Inter, Arial, sans-serif" font-size="16">This image is documentation scaffolding, not live agent output.</text>
+</svg>
