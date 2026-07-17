@@ -8,7 +8,7 @@
 | Framework | LangGraph |
 | Model | `gpt-4o` |
 | Difficulty | Advanced |
-| Original author | `ashishpatel26` |
+| Upstream provenance | [Attribution](../../ATTRIBUTION.md) |
 LangGraph multi-step agent that identifies competitors, analyzes each one, and generates a strategic competitive report.
 
 **Framework**: LangGraph
@@ -109,7 +109,7 @@ Follow the root [contribution guide](../../CONTRIBUTING.md). Keep changes scoped
 
 ## License and credits
 
-This project is included under the repository [MIT License](../../LICENSE). Original author metadata credits `ashishpatel26`; see [Attribution](../../ATTRIBUTION.md).
+This project is included under the repository [MIT License](../../LICENSE). Original upstream authorship and source provenance are preserved in [Attribution](../../ATTRIBUTION.md).
 
 ## Support
 

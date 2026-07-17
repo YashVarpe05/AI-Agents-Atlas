@@ -8,7 +8,7 @@
 | Framework | LangChain |
 | Model | `gpt-4o-mini` |
 | Difficulty | Intermediate |
-| Original author | `ashishpatel26` |
+| Upstream provenance | [Attribution](../../ATTRIBUTION.md) |
 Connects to any SQLite database and answers natural language questions by generating and executing SQL.
 
 **Framework**: LangChain
@@ -116,7 +116,7 @@ Follow the root [contribution guide](../../CONTRIBUTING.md). Keep changes scoped
 
 ## License and credits
 
-This project is included under the repository [MIT License](../../LICENSE). Original author metadata credits `ashishpatel26`; see [Attribution](../../ATTRIBUTION.md).
+This project is included under the repository [MIT License](../../LICENSE). Original upstream authorship and source provenance are preserved in [Attribution](../../ATTRIBUTION.md).
 
 ## Support
 

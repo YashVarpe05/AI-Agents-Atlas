@@ -108,7 +108,7 @@ function Shell({ route, children }) {
           ))}
         </nav>
 
-        <a className="icon-link" href="https://github.com/ashishpatel26/500-AI-Agents-Projects">
+        <a className="icon-link" href="https://github.com/YashVarpe05/AI-Agents-Atlas">
           <Github size={18} aria-hidden="true" />
           <span>GitHub</span>
         </a>

@@ -1,7 +1,7 @@
 # Security Policy
 
-> Provenance: restored from the upstream repository. Fork maintainers should replace the reporting
-> destination below only when they have an established private security channel.
+> This active policy is adapted from the upstream repository. Exact policy provenance is recorded
+> in [Attribution](ATTRIBUTION.md).
 
 ## Supported Versions
 
@@ -13,15 +13,15 @@
 
 **Do not report security vulnerabilities through public GitHub issues.**
 
-For the upstream project, report vulnerabilities responsibly through one of these channels:
-
-1. Email `ashishpatel.ce.2011@gmail.com` with subject `[SECURITY] 500-AI-Agents-Projects`.
-2. Use the upstream repository's [private security advisory form](https://github.com/ashishpatel26/500-AI-Agents-Projects/security/advisories/new).
+Report vulnerabilities through the repository's
+[private security advisory form](https://github.com/YashVarpe05/AI-Agents-Atlas/security/advisories/new).
+If that form is unavailable, request a private maintainer contact without posting exploit details
+in a public issue.
 
 Include a description, reproduction steps, potential impact, and a suggested fix when available.
 
-The upstream policy targets acknowledgement within 48 hours, a status update within 7 days, and a
-fix or mitigation within 30 days depending on severity.
+Response timing depends on severity and maintainer availability. Confirmed reports will be handled
+privately until a fix or mitigation is ready.
 
 ## Security Expectations
 

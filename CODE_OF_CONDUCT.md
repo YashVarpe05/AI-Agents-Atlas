@@ -1,7 +1,7 @@
 # Code of Conduct
 
-> Provenance: restored from the upstream repository. Its upstream enforcement contact is retained
-> below; fork maintainers should publish their own contact before operating a separate community.
+> This active policy is adapted from the upstream repository. Exact policy provenance is recorded
+> in [Attribution](ATTRIBUTION.md).
 
 ## Our Pledge
 
@@ -45,8 +45,9 @@ represents the community in public spaces.
 
 ## Enforcement
 
-For the upstream project, report unacceptable behavior to `ashishpatel.ce.2011@gmail.com`. Reports
-should be reviewed and investigated promptly and fairly.
+Report unacceptable behavior privately to the repository maintainers. If no private contact channel
+is available, request one without including sensitive details in a public issue. Reports should be
+reviewed and investigated promptly and fairly.
 
 ## Attribution
 

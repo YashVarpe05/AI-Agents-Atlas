@@ -19,8 +19,7 @@
 
 ## About this distribution
 
-This repository is a modernized distribution of
-[`ashishpatel26/500-AI-Agents-Projects`](https://github.com/ashishpatel26/500-AI-Agents-Projects).
+This repository is a modernized distribution of the upstream 500 AI Agents Projects collection.
 The upstream project curates 500+ agent ideas and external references. The downloaded snapshot
 modernized here contains **20 local runnable Python agents**, **three course lessons**, and a
 **React/Vite catalog**.
@@ -138,8 +137,9 @@ The original long-form catalog is preserved at
 
 ## License and acknowledgements
 
-The repository is distributed under the upstream [MIT License](LICENSE), copyright 2025
-`ashishpatel26`. External projects linked by the catalog remain governed by their own repositories
-and licenses. Review those terms before copying or redistributing third-party code.
+The repository is distributed under the upstream [MIT License](LICENSE). Its original copyright
+notice is preserved verbatim there. External projects linked by the catalog remain governed by
+their own repositories and licenses. Review those terms before copying or redistributing
+third-party code.
 
 Thank you to the original maintainer and every project author represented by the curated links.

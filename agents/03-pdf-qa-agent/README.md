@@ -8,7 +8,7 @@
 | Framework | LlamaIndex |
 | Model | `gpt-4o-mini` |
 | Difficulty | Beginner |
-| Original author | `ashishpatel26` |
+| Upstream provenance | [Attribution](../../ATTRIBUTION.md) |
 Loads any PDF and lets you ask questions about it. Supports both single-question and interactive chat modes.
 
 **Framework**: LlamaIndex
@@ -105,7 +105,7 @@ Follow the root [contribution guide](../../CONTRIBUTING.md). Keep changes scoped
 
 ## License and credits
 
-This project is included under the repository [MIT License](../../LICENSE). Original author metadata credits `ashishpatel26`; see [Attribution](../../ATTRIBUTION.md).
+This project is included under the repository [MIT License](../../LICENSE). Original upstream authorship and source provenance are preserved in [Attribution](../../ATTRIBUTION.md).
 
 ## Support
 
