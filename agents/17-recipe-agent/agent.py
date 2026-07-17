@@ -1,5 +1,5 @@
 """
-Recipe Recommendation Agent using Agno-style single agent.
+Recipe Recommendation Agent using LangChain.
 
 Suggests recipes based on available ingredients, dietary restrictions,
 and time constraints.
@@ -11,7 +11,6 @@ Usage:
 
 import argparse
 import json
-import os
 import re
 
 from dotenv import load_dotenv
@@ -78,12 +77,12 @@ def display_recipe(recipe: dict):
     print(f"\n🍽️  {recipe.get('name', 'Recipe')} ({recipe.get('cuisine', 'N/A')})")
     print(f"⏱️  Prep: {recipe.get('prep_time', 'N/A')} | Cook: {recipe.get('cook_time', 'N/A')} | Difficulty: {recipe.get('difficulty', 'N/A')}")
     print(f"👥 Serves: {recipe.get('servings', 'N/A')}")
-    print(f"\n📝 Ingredients:")
+    print("\n📝 Ingredients:")
     for ing in recipe.get("ingredients_needed", []):
         print(f"  • {ing}")
     if recipe.get("missing_ingredients"):
         print(f"\n➕ Optional additions: {', '.join(recipe['missing_ingredients'])}")
-    print(f"\n👨‍🍳 Instructions:")
+    print("\n👨‍🍳 Instructions:")
     for i, step in enumerate(recipe.get("instructions", []), 1):
         print(f"  {i}. {step}")
     n = recipe.get("nutrition_per_serving", {})

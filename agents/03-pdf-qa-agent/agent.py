@@ -10,7 +10,6 @@ Usage:
 """
 
 import argparse
-import os
 
 from dotenv import load_dotenv
 from llama_index.core import SimpleDirectoryReader, VectorStoreIndex

@@ -101,11 +101,11 @@ def main():
     elif args.code:
         code = args.code
         module_name = "module"
-        print(f"\n🧪 Generating tests for inline code")
+        print("\n🧪 Generating tests for inline code")
     else:
         code = SAMPLE_CODE
         module_name = "shopping"
-        print(f"\n🧪 Generating tests for sample code")
+        print("\n🧪 Generating tests for sample code")
 
     tests = generate_tests(code, module_name)
 

@@ -11,17 +11,13 @@ Run: python agent.py --topic "quantum computing applications"
 """
 
 import argparse
-import os
 
 from crewai import Agent, Crew, Process, Task
 from crewai.tools import BaseTool
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
-from pydantic import Field
 
 load_dotenv()
-
-llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.3)
 
 
 # Custom Tool: Word Counter
@@ -47,37 +43,32 @@ class TextFormatterTool(BaseTool):
 word_counter = WordCountTool()
 formatter = TextFormatterTool()
 
-# Agent 1: Researcher
-researcher = Agent(
-    role="Senior Researcher",
-    goal="Research topics thoroughly and provide factual, well-structured information",
-    backstory="PhD researcher with expertise in synthesizing complex information from multiple sources.",
-    llm=llm,
-    tools=[word_counter],
-    verbose=True,
-)
-
-# Agent 2: Writer
-writer = Agent(
-    role="Technical Writer",
-    goal="Transform research into clear, engaging content for technical audiences",
-    backstory="Award-winning technical writer with 10 years experience in AI/ML documentation.",
-    llm=llm,
-    tools=[formatter],
-    verbose=True,
-)
-
-# Agent 3: Editor
-editor = Agent(
-    role="Content Editor",
-    goal="Review and polish content for clarity, accuracy, and conciseness",
-    backstory="Senior editor who ensures all content meets the highest quality standards.",
-    llm=llm,
-    verbose=True,
-)
-
-
 def run_crew(topic: str) -> str:
+    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.3)
+    researcher = Agent(
+        role="Senior Researcher",
+        goal="Research topics thoroughly and provide factual, well-structured information",
+        backstory="PhD researcher with expertise in synthesizing complex information from multiple sources.",
+        llm=llm,
+        tools=[word_counter],
+        verbose=True,
+    )
+    writer = Agent(
+        role="Technical Writer",
+        goal="Transform research into clear, engaging content for technical audiences",
+        backstory="Award-winning technical writer with 10 years experience in AI/ML documentation.",
+        llm=llm,
+        tools=[formatter],
+        verbose=True,
+    )
+    editor = Agent(
+        role="Content Editor",
+        goal="Review and polish content for clarity, accuracy, and conciseness",
+        backstory="Senior editor who ensures all content meets the highest quality standards.",
+        llm=llm,
+        verbose=True,
+    )
+
     research_task = Task(
         description=f"""Research the topic: "{topic}"
 

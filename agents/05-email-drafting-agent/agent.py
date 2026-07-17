@@ -11,7 +11,6 @@ Usage:
 """
 
 import argparse
-import os
 
 from crewai import Agent, Crew, Process, Task
 from dotenv import load_dotenv
@@ -78,7 +77,7 @@ def main():
     parser.add_argument("--recipient", default="a potential client", help="Who the email is for")
     args = parser.parse_args()
 
-    print(f"\n✉️  Drafting email...\n")
+    print("\n✉️  Drafting email...\n")
     email = build_email_crew(args.context, args.tone, args.recipient)
 
     print("=" * 60)

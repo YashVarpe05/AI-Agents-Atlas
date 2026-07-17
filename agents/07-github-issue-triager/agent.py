@@ -1,5 +1,5 @@
 """
-GitHub Issue Triager using LangGraph.
+GitHub Issue Triager using LangChain.
 
 Analyzes a GitHub issue and produces: severity label, category,
 reproduction steps summary, and suggested assignee type.
@@ -80,7 +80,7 @@ def fetch_github_issue(url: str) -> tuple[str, str, list]:
     r = requests.get(api_url, headers=headers, timeout=10)
     r.raise_for_status()
     data = r.json()
-    return data["title"], data.get("body", ""), [l["name"] for l in data.get("labels", [])]
+    return data["title"], data.get("body", ""), [label["name"] for label in data.get("labels", [])]
 
 
 def main():
@@ -92,7 +92,7 @@ def main():
     args = parser.parse_args()
 
     if args.issue_url:
-        print(f"\n🔍 Fetching issue from GitHub...")
+        print("\n🔍 Fetching issue from GitHub...")
         title, body, labels = fetch_github_issue(args.issue_url)
     else:
         title, body, labels = args.title, args.body, []

@@ -10,7 +10,6 @@ Usage:
 """
 
 import argparse
-import os
 
 from crewai import Agent, Crew, Process, Task
 from dotenv import load_dotenv

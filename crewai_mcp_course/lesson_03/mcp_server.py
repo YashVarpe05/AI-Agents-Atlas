@@ -1,11 +1,10 @@
 """
 FastMCP Server for Lesson 03.
 
-Exposes tools that CrewAI agents can call via the MCP protocol.
-This is the server side — agents connect to this to use the tools.
+Exposes project-data tools through the MCP protocol.
+The lesson's agent uses equivalent local wrappers; it is not an MCP client.
 
 Run: python mcp_server.py
-(Keep this running while agent.py is running)
 """
 
 import json
@@ -24,7 +23,7 @@ def create_mcp_server():
     if not HAS_FASTMCP:
         return None
 
-    mcp = FastMCP("CrewAI Course Tools")
+    mcp = FastMCP("CrewAI Course Tools", host="127.0.0.1", port=8000)
 
     @mcp.tool()
     def get_datetime() -> str:
@@ -90,6 +89,6 @@ if __name__ == "__main__":
     if mcp:
         print("🚀 MCP Server starting on localhost:8000")
         print("Tools available: get_datetime, prioritize_tasks, format_as_json, calculate_project_metrics")
-        mcp.run(transport="streamable-http", host="localhost", port=8000)
+        mcp.run(transport="sse")
     else:
         print("Install fastmcp to run the server: pip install fastmcp")

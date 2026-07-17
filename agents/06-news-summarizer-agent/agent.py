@@ -1,5 +1,5 @@
 """
-News Summarizer Agent using AutoGen.
+News Summarizer Agent using LangChain.
 
 Fetches news articles and produces structured summaries with key insights.
 

@@ -1,5 +1,5 @@
 """
-Multi-Agent Debate System using AutoGen-style orchestration.
+Multi-Agent Debate System using custom LangChain orchestration.
 
 Two AI agents debate a topic from opposing sides, moderated by a judge
 who declares a winner and synthesizes the key arguments.
@@ -10,7 +10,6 @@ Usage:
 """
 
 import argparse
-import os
 
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage, SystemMessage
@@ -93,7 +92,6 @@ def run_debate(topic: str, rounds: int = 2) -> None:
     print("=" * 60)
 
     last_con_arg = ""
-    last_pro_arg = ""
 
     for round_num in range(1, rounds + 1):
         print(f"\n--- Round {round_num} ---\n")
@@ -106,7 +104,6 @@ def run_debate(topic: str, rounds: int = 2) -> None:
         print(f"\n🔴 {con.name} (AGAINST):")
         print(con_arg)
 
-        last_pro_arg = pro_arg
         last_con_arg = con_arg
 
     print(f"\n{'='*60}")

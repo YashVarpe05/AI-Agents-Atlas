@@ -13,20 +13,15 @@ Run the agent: python agent.py
 Optional: run python mcp_server.py to inspect the matching FastMCP server tools.
 """
 
-import asyncio
 import json
-import os
 from datetime import datetime
 
 from crewai import Agent, Crew, Process, Task
 from crewai.tools import BaseTool
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
-from pydantic import Field
 
 load_dotenv()
-
-llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.2)
 
 
 # CrewAI tool wrappers that mirror the FastMCP server's tool contracts.
@@ -62,29 +57,25 @@ class TaskPrioritizerTool(BaseTool):
         return json.dumps(prioritized, indent=2)
 
 
-# MCP-connected agent
-mcp_agent = Agent(
-    role="MCP-Powered Workflow Orchestrator",
-    goal="Use MCP tools to orchestrate complex workflows and produce structured outputs",
-    backstory="""You are an advanced AI agent with access to MCP (Model Context Protocol) tools.
-    You excel at using these tools to gather data, format outputs, and prioritize work.
-    You always produce structured, actionable results.""",
-    llm=llm,
-    tools=[DateTimeTool(), JsonFormatterTool(), TaskPrioritizerTool()],
-    verbose=True,
-)
-
-# Coordinator agent
-coordinator = Agent(
-    role="Project Coordinator",
-    goal="Coordinate tasks and produce a final project status report",
-    backstory="Experienced project manager who synthesizes information into clear status reports.",
-    llm=llm,
-    verbose=True,
-)
-
-
 def run_mcp_workflow(project_name: str, tasks: list[str]) -> str:
+    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.2)
+    mcp_agent = Agent(
+        role="MCP-Powered Workflow Orchestrator",
+        goal="Use MCP tools to orchestrate complex workflows and produce structured outputs",
+        backstory="""You are an advanced AI agent with access to MCP (Model Context Protocol) tools.
+        You excel at using these tools to gather data, format outputs, and prioritize work.
+        You always produce structured, actionable results.""",
+        llm=llm,
+        tools=[DateTimeTool(), JsonFormatterTool(), TaskPrioritizerTool()],
+        verbose=True,
+    )
+    coordinator = Agent(
+        role="Project Coordinator",
+        goal="Coordinate tasks and produce a final project status report",
+        backstory="Experienced project manager who synthesizes information into clear status reports.",
+        llm=llm,
+        verbose=True,
+    )
     tasks_str = ", ".join(tasks)
 
     gather_task = Task(

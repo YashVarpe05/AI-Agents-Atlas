@@ -10,11 +10,10 @@ Usage:
 """
 
 import argparse
-import os
 from typing import Annotated, TypedDict
 
 from dotenv import load_dotenv
-from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
+from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 from langchain_tavily import TavilySearch
 from langgraph.graph import END, StateGraph
@@ -71,7 +70,7 @@ def build_graph() -> StateGraph:
 
 def main():
     parser = argparse.ArgumentParser(description="Web Research Agent")
-    parser.add_argument("--query", default="latest advances in AI agents 2024", help="Research query")
+    parser.add_argument("--query", default="latest advances in AI agents", help="Research query")
     args = parser.parse_args()
 
     print(f"\n🔍 Researching: {args.query}\n")

@@ -10,7 +10,6 @@ Usage:
 """
 
 import argparse
-import os
 
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage, SystemMessage
@@ -53,7 +52,7 @@ def main():
         print(f"\n🔍 Reviewing: {args.file}\n")
     else:
         code = args.code
-        print(f"\n🔍 Reviewing inline code snippet\n")
+        print("\n🔍 Reviewing inline code snippet\n")
 
     review = review_code(code, args.language)
 

@@ -50,7 +50,7 @@ def create_sample_data(path: str):
 
 def main():
     parser = argparse.ArgumentParser(description="Data Analysis Agent")
-    parser.add_argument("--file", default="sample_data.csv", help="CSV or Excel file to analyze")
+    parser.add_argument("--file", default="sample_data.csv", help="CSV or XLSX file to analyze")
     parser.add_argument("--question", help="Single question (omit for interactive mode)")
     parser.add_argument(
         "--allow-dangerous-code",
@@ -59,20 +59,25 @@ def main():
     )
     args = parser.parse_args()
 
+    if not args.allow_dangerous_code:
+        print("⚠️  This agent uses LangChain's pandas agent, which executes model-generated Python code.")
+        print("Run again with --allow-dangerous-code only with trusted prompts and non-sensitive data.")
+        return
+
     if args.file == "sample_data.csv" and not os.path.exists("sample_data.csv"):
         print("🏗️  Creating sample sales dataset...")
         df = create_sample_data("sample_data.csv")
     else:
         ext = os.path.splitext(args.file)[1].lower()
-        df = pd.read_excel(args.file) if ext in (".xlsx", ".xls") else pd.read_csv(args.file)
+        if ext == ".xlsx":
+            df = pd.read_excel(args.file)
+        elif ext == ".csv":
+            df = pd.read_csv(args.file)
+        else:
+            parser.error("--file must use the .csv or .xlsx extension")
 
     print(f"\n📊 Loaded: {args.file} ({len(df)} rows × {len(df.columns)} columns)")
     print(f"📋 Columns: {', '.join(df.columns)}\n")
-
-    if not args.allow_dangerous_code:
-        print("⚠️  This agent uses LangChain's pandas agent, which executes model-generated Python code.")
-        print("Run again with --allow-dangerous-code only with trusted prompts and non-sensitive data.")
-        return
 
     llm = ChatOpenAI(model="gpt-4o", temperature=0)
     agent = create_pandas_dataframe_agent(

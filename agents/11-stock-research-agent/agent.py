@@ -1,5 +1,5 @@
 """
-Stock Research Agent using Agno + Yahoo Finance.
+Stock Research Agent using LangChain + Yahoo Finance.
 
 Provides comprehensive stock analysis: price data, financials,
 analyst ratings, and AI-powered investment summary.
@@ -10,9 +10,10 @@ Usage:
 """
 
 import argparse
-import os
 
 from dotenv import load_dotenv
+from langchain_core.messages import HumanMessage, SystemMessage
+from langchain_openai import ChatOpenAI
 
 load_dotenv()
 
@@ -21,9 +22,6 @@ try:
     HAS_YFINANCE = True
 except ImportError:
     HAS_YFINANCE = False
-
-from langchain_core.messages import HumanMessage, SystemMessage
-from langchain_openai import ChatOpenAI
 
 
 def get_stock_data(ticker: str) -> dict:
