@@ -1,6 +1,6 @@
-import heroImage from "../../images/AIAgentUseCase.jpg";
-import industryImage from "../../images/industry_usecase1.png";
-import repoReadme from "../../README.md?raw";
+import heroImage from "../../assets/brand/social-preview.svg";
+import industryImage from "../../assets/banner/dark.svg";
+import repoReadme from "../../docs/upstream-catalog.md?raw";
 import agentsReadme from "../../agents/README.md?raw";
 import courseReadme from "../../crewai_mcp_course/README.md?raw";
 
@@ -83,6 +83,24 @@ function extractUrl(value = "") {
     .match(/https?:\/\/[^\s)]+/g)
     ?.filter((url) => !url.includes("img.shields.io"));
   return directUrls?.[directUrls.length - 1] || "";
+}
+
+const unavailableLinkGroups = [
+  {
+    prefix: "https://github.com/agno-agi/agno/blob/main/cookbook/examples/agents/",
+    fallbackUrl: "https://github.com/agno-agi/agno/tree/main/cookbook",
+  },
+  {
+    prefix: "https://github.com/langchain-ai/langgraph/blob/main/docs/docs/tutorials/",
+    fallbackUrl: "https://github.com/langchain-ai/langgraph/tree/main/examples",
+  },
+];
+
+function getLinkMetadata(url) {
+  const unavailableGroup = unavailableLinkGroups.find((group) => url.startsWith(group.prefix));
+  return unavailableGroup
+    ? { linkStatus: "unavailable", fallbackUrl: unavailableGroup.fallbackUrl }
+    : { linkStatus: url ? "unverified" : "missing", fallbackUrl: "" };
 }
 
 function splitTableRow(line = "") {
@@ -214,6 +232,7 @@ export function parseReadmeUseCases(markdown = repoReadme) {
             sourceGroup: h2,
             sourceSubheading: [h3, subheading].filter(Boolean).join(" / "),
             url,
+            ...getLinkMetadata(url),
             resourceType: /notebook|ipynb/i.test(url) ? "Notebook" : "Code",
             tags: [
               inferFramework(sourceHeading),

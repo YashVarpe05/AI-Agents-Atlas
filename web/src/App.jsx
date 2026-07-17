@@ -88,7 +88,7 @@ function Shell({ route, children }) {
           </span>
           <span>
             <strong>AI Agents Atlas</strong>
-            <small>500+ project map</small>
+            <small>Project and course map</small>
           </span>
         </a>
 
@@ -155,10 +155,10 @@ function GraphHero() {
     <section className="hero-grid">
       <div className="hero-copy">
         <p className="eyebrow">Course front page plus project atlas</p>
-        <h1>500+ AI Agent Projects</h1>
+        <h1>AI Agents Atlas</h1>
         <p>
-          A premium React atlas for learning, browsing, running, and redirecting into the
-          strongest AI agent examples in this repository.
+          Explore 20 local reference agents, three course lessons, and the curated external
+          examples preserved from the upstream catalog.
         </p>
         <div className="hero-actions">
           <a className="primary-action" href={pathFor("/course")}>
@@ -382,7 +382,7 @@ function UseCaseCard({ useCase }) {
     <article className="usecase-card">
       <div className="card-topline">
         <span className={`framework-pill ${slugify(useCase.framework)}`}>{useCase.framework}</span>
-        <small>{useCase.resourceType}</small>
+        <small>{useCase.linkStatus === "unavailable" ? "Archived link" : useCase.resourceType}</small>
       </div>
       <h3>{useCase.title}</h3>
       <p>{useCase.description}</p>
@@ -391,7 +391,7 @@ function UseCaseCard({ useCase }) {
           <FileText size={15} aria-hidden="true" />
           Detail
         </a>
-        {useCase.url ? (
+        {useCase.url && useCase.linkStatus !== "unavailable" ? (
           <a href={pathFor(`/go/${useCase.id}`)}>
             <ExternalLink size={15} aria-hidden="true" />
             Redirect
@@ -714,9 +714,19 @@ function UseCasePage({ useCase }) {
             </div>
           </section>
           {useCase.url ? (
-            <a className="primary-action full-width" href={pathFor(`/go/${useCase.id}`)}>
+            <a
+              className="primary-action full-width"
+              href={
+                useCase.linkStatus === "unavailable"
+                  ? useCase.fallbackUrl
+                  : pathFor(`/go/${useCase.id}`)
+              }
+              {...(useCase.linkStatus === "unavailable"
+                ? { target: "_blank", rel: "noreferrer" }
+                : {})}
+            >
               <ExternalLink size={18} aria-hidden="true" />
-              Open redirect
+              {useCase.linkStatus === "unavailable" ? "Open framework repository" : "Open redirect"}
             </a>
           ) : null}
         </aside>
@@ -761,7 +771,7 @@ function UseCasePage({ useCase }) {
 
 function RedirectPage({ useCase }) {
   useEffect(() => {
-    if (!useCase?.url) return undefined;
+    if (!useCase?.url || useCase.linkStatus === "unavailable") return undefined;
     const timer = window.setTimeout(() => {
       window.location.href = useCase.url;
     }, 900);
@@ -769,6 +779,26 @@ function RedirectPage({ useCase }) {
   }, [useCase]);
 
   if (!useCase) return <NotFound />;
+
+  if (useCase.linkStatus === "unavailable") {
+    return (
+      <PageHero
+        eyebrow="Archived catalog entry"
+        title={useCase.title}
+        description="The original deep link is no longer available. The historical catalog entry is preserved for provenance."
+        icon={ExternalLink}
+        action={
+          useCase.fallbackUrl
+            ? {
+                label: "Open framework repository",
+                href: useCase.fallbackUrl,
+                external: true,
+              }
+            : null
+        }
+      />
+    );
+  }
 
   return (
     <PageHero
